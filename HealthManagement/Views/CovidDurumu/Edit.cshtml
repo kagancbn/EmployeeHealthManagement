@@ -1,0 +1,62 @@
+﻿@model HealthManagement.Models.CovidDurumu
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>CovidDurumu</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CovidDurumuId" />
+            <div class="form-group">
+                <label asp-for="CovidBaslangic" class="control-label"></label>
+                <input asp-for="CovidBaslangic" class="form-control" />
+                <span asp-validation-for="CovidBaslangic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CovidBitis" class="control-label"></label>
+                <input asp-for="CovidBitis" class="form-control" />
+                <span asp-validation-for="CovidBitis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Covid" class="control-label">Güncel Covid Durumu: Pozitif</label>
+                @Html.CheckBox("Covid", false)
+                <input asp-for="Covid" type="hidden" value="false" />
+                <span asp-validation-for="Covid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KronikHastalık" class="control-label">Kronik Hastalığım Var : Evet</label>
+                @Html.CheckBox("KronikHastalık", false)
+                <input asp-for="KronikHastalık" type="hidden" value="false" />
+                <span asp-validation-for="KronikHastalık" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BelirtiId" class="control-label"></label>
+                <select asp-for="BelirtiId" class="form-control" asp-items="ViewBag.BelirtiId"></select>
+                <span asp-validation-for="BelirtiId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AsiId" class="control-label"></label>
+                <select asp-for="AsiId" class="form-control" asp-items="ViewBag.AsiId"></select>
+                <span asp-validation-for="AsiId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="ElemanId" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

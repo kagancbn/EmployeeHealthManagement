@@ -1,0 +1,82 @@
+﻿@model HealthManagement.Models.CovidDurumu
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CovidDurumu</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CovidBaslangic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CovidBaslangic)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CovidBitis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CovidBitis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Covid)
+        </dt>
+        @if (Model.Covid.Equals(true))
+        {
+            <dd class="col-sm-10">
+                Pozitif
+            </dd>
+        }
+        else
+        {
+            <dd class="col-sm-10">
+                Negatif
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KronikHastalık)
+        </dt>
+        @if (Model.KronikHastalık.Equals(true))
+        {
+            <dd class="col-sm-10">
+                Var
+            </dd>
+        }
+        else
+        {
+            <dd class="col-sm-10">
+                Yok
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Asi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Asi.AsiIsim)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belirti)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belirti.BelirtiIsim)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Eleman)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Eleman.Isim)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CovidDurumuId" />
+        @*<input type="hidden" asp-for="ElemanId" />*@
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

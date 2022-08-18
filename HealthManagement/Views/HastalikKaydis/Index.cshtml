@@ -1,0 +1,66 @@
+﻿@model IEnumerable<HealthManagement.Models.HastalikKaydi>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Sağlık Kayıtları</h1>
+
+<p>
+    <a asp-action="Create">Yeni Hastalık Bilgisi Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Eleman Adı
+            </th>
+            <th>
+                Eleman T.C Kmlk. No
+            </th>
+            <th>
+                Hastalık Tarihi
+            </th>
+            <th>
+                Hastalık Adı
+            </th>
+            <th>
+                Kullanılan İlaçlar - Günlük Doz
+            </th>
+            <th>
+                Hastalık Semptomları
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eleman.Isim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eleman.TcNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HastalikTarih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hastalik.HastalikIsim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ilac.IlacIsim)-
+                @Html.DisplayFor(modelItem => item.Ilac.IlacDoz)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semptom.SemptomIsim)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.HastalikKaydiId }) |
+                @Html.ActionLink("Detay", "Details", new { id = item.HastalikKaydiId }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.HastalikKaydiId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<HealthManagement.Models.CovidDurumu>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Covid Kayıtları</h1>
+
+<p>
+    <a asp-action="Create">Yeni Covid Durumu Oluştur</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Eleman ismi
+            </th>
+            <th>
+                Covid Başlangıç Tarihi
+            </th>
+            <th>
+                Covid Bitiş Tarihi
+            </th>
+            <th>
+                Elamanın Şuanki Covid Durumu
+            </th>
+            <th>
+                Kronik Hastalık
+            </th>
+            <th>
+                Aşılar
+            </th>
+            <th>
+                Belirtiler
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eleman.Isim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CovidBaslangic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CovidBitis)
+            </td>
+            @if (item.Covid == true)
+            {
+                <td>
+                    Pozitif
+                </td>
+            }
+            else
+            {
+                <td>
+                    Negatif
+                </td>
+            }
+            @if (item.KronikHastalık == true){
+                <td>
+                    Var
+                </td>
+            }
+            else{
+                <td>
+                    Yok
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Asi.AsiIsim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Belirti.BelirtiIsim)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.CovidDurumuId }) |
+                @Html.ActionLink("Detay", "Details", new { id = item.CovidDurumuId }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.CovidDurumuId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

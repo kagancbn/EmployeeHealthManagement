@@ -1,0 +1,69 @@
+﻿@model HealthManagement.Models.Eleman
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Eleman Ekle</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Isim" class="control-label"></label>
+                <input asp-for="Isim" class="form-control" />
+                <span asp-validation-for="Isim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Soyisim" class="control-label"></label>
+                <input asp-for="Soyisim" class="form-control" />
+                <span asp-validation-for="Soyisim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maas" class="control-label">Maaş</label>
+                <input asp-for="Maas" class="form-control" />
+                <span asp-validation-for="Maas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TcNo" class="control-label"></label>
+                <input asp-for="TcNo" class="form-control" />
+                <span asp-validation-for="TcNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pozisyon" class="control-label"></label>
+                <input asp-for="Pozisyon" class="form-control" />
+                <span asp-validation-for="Pozisyon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hobiler" class="control-label"></label>
+                <input asp-for="Hobiler" class="form-control" />
+                <span asp-validation-for="Hobiler" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EgitimId" class="control-label">Eğitim Düzeyi</label>
+                <select asp-for="EgitimId" class ="form-control" asp-items="ViewBag.EgitimId">Eğitim Düzeyi</select>
+            </div>
+            <div class="form-group">
+                <label asp-for="KanGrubuId" class="control-label">Kan Grubu</label>
+                <select asp-for="KanGrubuId" class ="form-control" asp-items="ViewBag.KanGrubuId">Kan Grubu</select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SehirId" class="control-label">Şehir</label>
+                <select asp-for="SehirId" class ="form-control" asp-items="ViewBag.SehirId">Şehir</select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

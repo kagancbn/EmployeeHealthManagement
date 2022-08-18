@@ -1,0 +1,60 @@
+﻿@model HealthManagement.Models.CovidDurumu
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Covid Durumu Oluştur</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ElemanId" class="control-label">Eleman Seç</label>
+                <select asp-for="ElemanId" class="form-control" asp-items="ViewBag.ElemanId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CovidBaslangic" class="control-label">Covid Başlangıç Tarihi</label>
+                <input asp-for="CovidBaslangic" class="form-control" />
+                <span asp-validation-for="CovidBaslangic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CovidBitis" class="control-label">Covid Bitiş Tarihi</label>
+                <input asp-for="CovidBitis" class="form-control" />
+                <span asp-validation-for="CovidBitis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Covid" class="control-label">Güncel Covid Durumu: Pozitif</label>
+                @Html.CheckBox("Covid",false)
+                <input asp-for="Covid" type="hidden" value="false" />
+                <span asp-validation-for="Covid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KronikHastalık" class="control-label">Kronik Hastalığım Var : Evet</label>
+                @Html.CheckBox("KronikHastalık", false)
+                <input asp-for="KronikHastalık" type="hidden" value="false" />
+                <span asp-validation-for="KronikHastalık" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BelirtiId" class="control-label">Belirti</label>
+                <select asp-for="BelirtiId" class="form-control" asp-items="ViewBag.BelirtiId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AsiId" class="control-label">Aşılar</label>
+                <select asp-for="AsiId" class="form-control" asp-items="ViewBag.AsiId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

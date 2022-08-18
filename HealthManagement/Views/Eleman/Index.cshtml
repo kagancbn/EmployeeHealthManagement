@@ -1,0 +1,83 @@
+﻿@model IEnumerable<HealthManagement.Models.Eleman>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Eleman Kayıtları</h1>
+
+<p>
+    <a asp-action="Create">Yeni Elaman Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                İsim
+            </th>
+            <th>
+                Soyisim
+            </th>
+            <th>
+                Maaş
+            </th>
+            <th>
+                TC No
+            </th>
+            <th>
+                Pozisyon
+            </th>
+            <th>
+                Hobiler
+            </th>
+            <th>
+                Eğitim Düzeyi
+            </th>
+            <th>
+                Kan Grubu
+            </th>
+            <th>
+                Şehir
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Isim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soyisim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TcNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pozisyon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hobiler)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Egitim.EgitimDuzeyi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KanGrubu.KanGrubu1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sehir.Sehirİsim)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ElemanId">Güncelle</a> |
+                <a asp-action="Details" asp-route-id="@item.ElemanId">Detay</a> |
+                <a asp-action="Delete" asp-route-id="@item.ElemanId">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

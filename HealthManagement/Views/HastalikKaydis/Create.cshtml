@@ -1,0 +1,48 @@
+﻿@model HealthManagement.Models.HastalikKaydi
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Hastalık Kaydı Ekle</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SemptomId" class="control-label">Semptomlar</label>
+                <select asp-for="SemptomId" class ="form-control" asp-items="ViewBag.SemptomId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="HastalikId" class="control-label">Hastalık Seç</label>
+                <select asp-for="HastalikId" class ="form-control" asp-items="ViewBag.HastalikId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IlacId" class="control-label">İlaç Seç</label>
+                <select asp-for="IlacId" class ="form-control" asp-items="ViewBag.IlacId" ></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="HastalikTarih" class="control-label"></label>
+                <input asp-for="HastalikTarih" class="form-control" />
+                <span asp-validation-for="HastalikTarih" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ElemanId" class="control-label">Eleman Gir</label>
+                <select asp-for="ElemanId" class ="form-control" asp-items="ViewBag.ElemanId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

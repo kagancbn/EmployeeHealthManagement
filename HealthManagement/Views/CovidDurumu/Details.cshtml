@@ -1,0 +1,78 @@
+﻿@model HealthManagement.Models.CovidDurumu
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CovidDurumu</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CovidBaslangic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CovidBaslangic)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CovidBitis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CovidBitis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Covid)
+        </dt>
+        @if (Model.Covid.Equals(true))
+        {
+            <dd class="col-sm-10">
+                Pozitif
+            </dd>
+        }
+        else
+        {
+            <dd class="col-sm-10">
+                Negatif
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KronikHastalık)
+        </dt>
+        @if (Model.KronikHastalık.Equals(true))
+        {
+            <dd class="col-sm-10">
+                Var
+            </dd>
+        }
+        else
+        {
+            <dd class="col-sm-10">
+                Yok
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Asi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Asi.AsiIsim)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belirti)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belirti.BelirtiIsim)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Eleman)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Eleman.Isim)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.CovidDurumuId  }) |
+    <a asp-action="Index">Back to List</a>
+</div>
